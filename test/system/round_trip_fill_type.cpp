@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // test-utils
 #include "round_trip.hpp"
@@ -67,4 +67,3 @@ TEST_CASE("vector tile polygon non zero fill")
     CHECK( !mapnik::geometry::is_empty(new_geom) );
     REQUIRE( new_geom.is<mapnik::geometry::polygon<double> >() );
 }
-

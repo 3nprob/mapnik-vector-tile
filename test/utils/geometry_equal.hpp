@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // boost
 #include <type_traits>
@@ -83,8 +83,15 @@ auto zip_crange(Conts&... conts)
 
 #include <string>
 #include <cstdlib>
-#include <cxxabi.h>
 
+#if defined(_MSC_VER)
+template<typename T>
+std::string type_name()
+{
+    return typeid(T).name();
+}
+#else
+#include <cxxabi.h>
 template<typename T>
 std::string type_name()
 {
@@ -97,6 +104,7 @@ std::string type_name()
     }   
     return tname;
 }
+#endif
 
 template <typename T>
 void assert_g_equal(mapnik::geometry::geometry<T> const& g1, mapnik::geometry::geometry<T> const& g2);

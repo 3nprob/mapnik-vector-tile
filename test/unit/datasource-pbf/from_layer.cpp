@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mapnik vector tile
 #include "vector_tile_datasource_pbf.hpp"

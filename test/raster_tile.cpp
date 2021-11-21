@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // test utils
 #include "test_utils.hpp"
@@ -27,6 +27,7 @@
 
 #include <sstream>
 #include <fstream>
+#include <iomanip>
 
 TEST_CASE("raster tile output 1")
 {

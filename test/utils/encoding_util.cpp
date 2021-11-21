@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mapnik vector tile
 #include "vector_tile_geometry_decoder.hpp"
@@ -14,6 +14,7 @@
 #include "decoding_util.hpp"
 
 #include <iostream>
+#include <sstream>
 
 using namespace mapnik::geometry;
 

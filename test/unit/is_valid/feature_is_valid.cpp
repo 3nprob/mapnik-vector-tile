@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mvt
 #include "vector_tile_is_valid.hpp"

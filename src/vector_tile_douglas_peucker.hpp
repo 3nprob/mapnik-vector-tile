@@ -188,7 +188,7 @@ inline void consider(Range const& vec,
         __m128d v_y_2 =  _mm_set1_pd(v_y);
         __m128d c2_2 =  _mm_set1_pd(c2);
         __m128d zero_2 = _mm_set1_pd(0.0);
-        __m128d true_2 = _mm_castsi128_pd(_mm_set1_epi64(reinterpret_cast<__m64>(std::numeric_limits<std::uint64_t>::max())));
+        __m128d true_2 = _mm_castsi128_pd(_mm_set1_epi64(std::numeric_limits<std::uint64_t>::max()));
         __m128d md_2 = _mm_set1_pd(md);
         __m128d md_idx = _mm_castsi128_pd(_mm_set1_epi64(reinterpret_cast<__m64>(i)));
 

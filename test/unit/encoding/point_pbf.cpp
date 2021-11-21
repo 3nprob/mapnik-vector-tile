@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mapnik vector tile
 #include "vector_tile_geometry_encoder_pbf.hpp"
@@ -199,4 +199,3 @@ TEST_CASE("encode pbf empty multi point geometry")
     
     REQUIRE(feature.geometry_size() == 0);
 }
-

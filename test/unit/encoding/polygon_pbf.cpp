@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mapnik vector tile
 #include "vector_tile_geometry_encoder_pbf.hpp"
@@ -607,4 +607,3 @@ TEST_CASE("encoding pbf polygon with valid exterior ring but degenerate interior
     // Close
     CHECK(feature.geometry(10) == 15);
 }
-

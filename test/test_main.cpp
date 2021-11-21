@@ -1,6 +1,6 @@
-// https://github.com/philsquared/Catch/blob/master/docs/own-main.md
+// https://github.com/catchorg/Catch2/blob/v2.x/docs/own-main.md
 #define CATCH_CONFIG_RUNNER
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 #include <google/protobuf/stubs/common.h>
 #include <mapnik/datasource_cache.hpp>

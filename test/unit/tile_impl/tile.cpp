@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 #include <memory>
 
 // mapnik vector tile tile class
@@ -128,13 +128,13 @@ TEST_CASE("Vector tile base class")
         CHECK(blah_blah == "blahblah");
 
         protozero::pbf_reader layer_reader;
-        CHECK_THROWS_AS(tile.layer_reader("bogus", layer_reader), protozero::end_of_buffer_exception const&);
+        CHECK_THROWS_AS(tile.layer_reader("bogus", layer_reader), protozero::end_of_buffer_exception);
 
         protozero::pbf_reader layer_reader_by_index;
         bool status = tile.layer_reader(0, layer_reader_by_index);
 
         CHECK(status == true);
-        CHECK_THROWS_AS(layer_reader_by_index.next(1), protozero::end_of_buffer_exception const&);
+        CHECK_THROWS_AS(layer_reader_by_index.next(1), protozero::end_of_buffer_exception);
 
         vector_tile::Tile bogus_tile;
         bogus_tile.ParseFromString(tile.get_buffer());

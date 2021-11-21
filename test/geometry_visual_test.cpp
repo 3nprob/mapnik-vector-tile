@@ -1,5 +1,5 @@
 // catch
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mapnik-vector-tile
 #include "vector_tile_strategy.hpp"
@@ -26,7 +26,7 @@
 
 // test utils
 #include "test_utils.hpp"
-#include "geometry_equal.hpp"
+#include "utils/geometry_equal.hpp"
 
 // std
 #include <cmath>

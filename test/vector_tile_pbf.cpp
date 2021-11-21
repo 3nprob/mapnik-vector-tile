@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // test utils
 #include "test_utils.hpp"
@@ -315,7 +315,7 @@ TEST_CASE( "pbf decoding empty buffer", "should throw exception" ) {
 TEST_CASE( "pbf decoding garbage buffer", "should throw exception" ) {
     std::string buffer("daufyglwi3h7fseuhfas8w3h,dksufasdf");
     protozero::pbf_reader pbf_tile(buffer);
-    REQUIRE_THROWS_AS(pbf_tile.next(), protozero::unknown_pbf_wire_type_exception const&);
+    REQUIRE_THROWS_AS(pbf_tile.next(), protozero::unknown_pbf_wire_type_exception);
     protozero::pbf_reader layer2;
 #if defined(DNDEBUG)
     // throws in release mode
@@ -364,7 +364,7 @@ TEST_CASE("pbf decoding some truncated buffers")
     // it off at a point that would be valid anyway.
     for (std::size_t i=1; i< buffer.size(); ++i)
     {
-      CHECK_THROWS(
+      CHECK_THROWS([&]()
       {
           protozero::pbf_reader pbf_tile(buffer.c_str(), i);
           pbf_tile.next();
@@ -551,7 +551,7 @@ TEST_CASE("Check that we throw on various valid-but-we-don't-handle PBF encoded 
         REQUIRE(t.is_open());
         std::string buffer((std::istreambuf_iterator<char>(t)),
                         std::istreambuf_iterator<char>());
-        CHECK_THROWS({
+        CHECK_THROWS([&]() {
             mapnik::box2d<double> bbox(-20037508.342789,-20037508.342789,20037508.342789,20037508.342789);
             unsigned tile_size = 4096;
               protozero::pbf_reader pbf_tile(buffer);

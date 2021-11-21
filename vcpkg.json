@@ -1,0 +1,17 @@
+{
+  "name": "mapnik-vector-tile",
+  "version-string": "master",
+  "description": "Mapnik implemention of Mapbox Vector Tile specification",
+  "homepage": "https://github.com/mathisloge/mapnik-vector-tile",
+  "dependencies": [
+    {
+      "name": "mapnik",
+      "features": [
+        "input-geojson",
+        "input-gdal"
+      ]
+    },
+    "protobuf",
+    "mapbox-wagyu"
+  ]
+}

@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 // mapnik vector tile
 #include "vector_tile_composite.hpp"
@@ -11,5 +11,3 @@ TEST_CASE("composite")
 {
     CHECK(true);
 }
-
-

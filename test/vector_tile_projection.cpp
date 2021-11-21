@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include <catch2/catch.hpp>
 
 #include <mapnik/projection.hpp>
 #include <mapnik/geometry/box2d.hpp>

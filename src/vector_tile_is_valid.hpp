@@ -9,6 +9,7 @@
 
 // std
 #include <sstream>
+#include <set>
 
 namespace mapnik
 {
