@@ -19,6 +19,8 @@ set(m_inc_dir ${CMAKE_INSTALL_INCLUDEDIR} CACHE STRING "Install directory for th
 set(m_cmake_dir ${MAPNIK_LIB_DIR}/cmake/mapnikVectorTile CACHE STRING "Install directory of the cmake targets")
 
 find_package(mapnik CONFIG REQUIRED)
+find_package(Protobuf REQUIRED)
+
 add_subdirectory(src)
 if(BUILD_BIN)
     add_subdirectory(bin)

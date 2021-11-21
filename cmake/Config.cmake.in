@@ -2,6 +2,6 @@
 include(CMakeFindDependencyMacro)
 
 find_dependency(mapnik CONFIG REQUIRED)
-find_dependency(Protobuf CONFIG REQUIRED)
+find_dependency(Protobuf REQUIRED)
 
 include("${CMAKE_CURRENT_LIST_DIR}/mapnik-vector-tileTargets.cmake")

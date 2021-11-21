@@ -1,5 +1,3 @@
-find_package(Protobuf REQUIRED)
-
 add_library(mapnik-vector-tile STATIC)
 add_library(mapnik::mapnik-vector-tile ALIAS mapnik-vector-tile)
 target_include_directories(mapnik-vector-tile PUBLIC  
