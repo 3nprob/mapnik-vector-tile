@@ -7,7 +7,7 @@ target_include_directories(mapnik-vector-tile PUBLIC
 )
 target_link_libraries(mapnik-vector-tile PUBLIC 
     mapnik::mapnik
-    protobuf::libprotoc 
+    protobuf::libprotobuf 
 )
 target_compile_definitions(mapnik-vector-tile 
     PUBLIC 
