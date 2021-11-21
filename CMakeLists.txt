@@ -13,6 +13,8 @@ include(GNUInstallDirs)
 option(USE_SSE_MATH "use SSE instructions" OFF)
 option(BUILD_EXAMPLES "build example application" OFF)
 option(BUILD_BIN "build helper binary" OFF)
+set(MAPBOX_WAGYU_INCLUDE_DIRS "" CACHE PATH "include dir for mapbox/wagyu")
+
 set(m_bin_dir ${CMAKE_INSTALL_BINDIR} CACHE STRING "Install directory for binaries")
 set(m_lib_dir ${CMAKE_INSTALL_LIBDIR} CACHE STRING "Install directory for libraries")
 set(m_inc_dir ${CMAKE_INSTALL_INCLUDEDIR} CACHE STRING "Install directory for the headers")
