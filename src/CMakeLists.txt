@@ -1,8 +1,11 @@
+find_path(MAPBOX_WAGYU_INCLUDE_DIRS "mapbox/geometry/wagyu/wagyu.hpp")
+
 add_library(mapnik-vector-tile STATIC)
 add_library(mapnik::mapnik-vector-tile ALIAS mapnik-vector-tile)
 target_include_directories(mapnik-vector-tile PUBLIC  
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${MAPBOX_WAGYU_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(mapnik-vector-tile PUBLIC 

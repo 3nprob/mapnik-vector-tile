@@ -51,6 +51,7 @@ install(DIRECTORY src/ DESTINATION ${m_inc_dir}
         PATTERN "*.hpp"
         PATTERN "*.ipp"
 )
+
 # export mapnik configuration
 write_basic_package_version_file(
     "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfigVersion.cmake"
