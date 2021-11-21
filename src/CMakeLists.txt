@@ -3,7 +3,7 @@ add_library(mapnik::mapnik-vector-tile ALIAS mapnik-vector-tile)
 target_include_directories(mapnik-vector-tile PUBLIC  
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    ${MAPBOX_WAGYU_INCLUDE_DIRS}
+    $<BUILD_INTERFACE:${MAPBOX_WAGYU_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(mapnik-vector-tile PUBLIC 
@@ -21,6 +21,7 @@ set_target_properties(mapnik-vector-tile PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON 
     CXX_EXTENSIONS OFF
+    POSITION_INDEPENDENT_CODE ON
 )
 
 protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS "${PROJECT_SOURCE_DIR}/proto/vector_tile.proto")
