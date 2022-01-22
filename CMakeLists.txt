@@ -13,6 +13,7 @@ include(GNUInstallDirs)
 option(USE_SSE_MATH "use SSE instructions" OFF)
 option(BUILD_EXAMPLES "build example application" OFF)
 option(BUILD_BIN "build helper binary" OFF)
+option(MAPNIK_VECTOR_TILE_ENABLE_INSTALL "disable install step" OFF)
 set(MAPBOX_WAGYU_INCLUDE_DIRS "" CACHE PATH "include dir for mapbox/wagyu")
 
 set(m_bin_dir ${CMAKE_INSTALL_BINDIR} CACHE STRING "Install directory for binaries")
@@ -34,47 +35,48 @@ if(BUILD_TESTING)
     add_subdirectory(test)
 endif()
 
+if(MAPNIK_VECTOR_TILE_ENABLE_INSTALL)
+    include(CMakePackageConfigHelpers)
 
-include(CMakePackageConfigHelpers)
+    install(TARGETS mapnik-vector-tile
+        EXPORT mapnikVectorTileTargets
+        INCLUDES DESTINATION ${m_inc_dir}
+        RUNTIME DESTINATION ${m_bin_dir}
+            COMPONENT mapnikVectorTileRuntime
+        LIBRARY DESTINATION ${m_lib_dir}
+            COMPONENT mapnikVectorTileRuntime
+            NAMELINK_COMPONENT mapnikVectorTileDevelopment
+        ARCHIVE DESTINATION ${m_lib_dir}
+            COMPONENT mapnikVectorTileDevelopment
+    )
+    install(DIRECTORY src/ DESTINATION ${m_inc_dir}
+        FILES_MATCHING 
+            PATTERN "*.hpp"
+            PATTERN "*.ipp"
+    )
 
-install(TARGETS mapnik-vector-tile
-    EXPORT mapnikVectorTileTargets
-    INCLUDES DESTINATION ${m_inc_dir}
-    RUNTIME DESTINATION ${m_bin_dir}
-        COMPONENT mapnikVectorTileRuntime
-    LIBRARY DESTINATION ${m_lib_dir}
-        COMPONENT mapnikVectorTileRuntime
-        NAMELINK_COMPONENT mapnikVectorTileDevelopment
-    ARCHIVE DESTINATION ${m_lib_dir}
-        COMPONENT mapnikVectorTileDevelopment
-)
-install(DIRECTORY src/ DESTINATION ${m_inc_dir}
-    FILES_MATCHING 
-        PATTERN "*.hpp"
-        PATTERN "*.ipp"
-)
-
-# export mapnik configuration
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfigVersion.cmake"
-    VERSION ${MAPNIK_VERSION}
-    COMPATIBILITY ExactVersion
-)
-configure_package_config_file(cmake/Config.cmake.in
-    "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfig.cmake"
-    INSTALL_DESTINATION ${m_cmake_dir}
-    NO_CHECK_REQUIRED_COMPONENTS_MACRO
-)
-
-install(
-    FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfig.cmake"
+    # export mapnik configuration
+    write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfigVersion.cmake"
-    DESTINATION ${m_cmake_dir}
-)
+        VERSION ${MAPNIK_VERSION}
+        COMPATIBILITY ExactVersion
+    )
+    configure_package_config_file(cmake/Config.cmake.in
+        "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfig.cmake"
+        INSTALL_DESTINATION ${m_cmake_dir}
+        NO_CHECK_REQUIRED_COMPONENTS_MACRO
+    )
 
-install(EXPORT mapnikVectorTileTargets
-    DESTINATION ${m_cmake_dir}
-    FILE mapnikVectorTile.cmake
-    NAMESPACE mapnik::
-)
+    install(
+        FILES
+            "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfig.cmake"
+            "${CMAKE_CURRENT_BINARY_DIR}/mapnikVectorTileConfigVersion.cmake"
+        DESTINATION ${m_cmake_dir}
+    )
+
+    install(EXPORT mapnikVectorTileTargets
+        DESTINATION ${m_cmake_dir}
+        FILE mapnikVectorTile.cmake
+        NAMESPACE mapnik::
+    )
+endif()
