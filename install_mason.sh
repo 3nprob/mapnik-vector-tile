@@ -40,7 +40,6 @@ if [[ ${SKIP_MAPNIK_INSTALL:-} != 'YES' ]] && [[ ! -f ./mason_packages/.link/bin
     install boost_libfilesystem 1.75.0
     install boost_libregex_icu58 1.75.0
     install freetype 2.7.1
-    install harfbuzz 1.4.4-ft
 
     # mapnik
     install mapnik e553f55dc
